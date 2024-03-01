@@ -1,0 +1,444 @@
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    color: white;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.btn {
+    padding: 8px 20px;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.btn::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent,
+            #00fffc, transparent);
+    transform: translateX(-100%);
+    transition: 0.6s;
+}
+
+.btn:hover::before {
+    transform: translateX(100%);
+}
+
+.btn:hover {
+    background: transparent;
+    box-shadow: 0 0 20px 10px rgba(23, 202, 229, 0.5);
+}
+
+.form-input-material {
+    --input-default-border-color: white;
+    --input-border-bottom-color: white;
+}
+
+.form-input-material input {
+    color: white;
+}
+
+.login-form {
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 40px;
+    color: white;
+    box-shadow: 0 0.4px 0.4px rgba(255, 255, 255, 0.5),
+        0 1px 1px rgba(255, 255, 255, 0.5),
+        0 2.1px 2.1px rgba(255, 255, 255, 0.5),
+        0 4.4px 4.4px rgba(255, 255, 255, 0.5),
+        0 12px 12px rgba(181, 192, 199, 0.5);
+    border-radius: 10px;
+}
+
+.login-form h1 {
+    margin: 0 0 24px 0;
+}
+
+.login-form .form-input-material {
+    margin: 12px 0;
+}
+
+.login-form .btn {
+    width: 100%;
+    margin: 18px 0 9px 0;
+}
+
+.content {
+    padding: 20px;
+    flex: 1;
+    margin-left: 0; /* Tidak ada margin kiri ketika sidebar disembunyikan */
+    transition: margin-left 0.3s ease-in-out;
+}
+.show-sidebar .sidebar{
+    left: 0;
+}
+.show-sidebar .content{
+    margin-left: 200px;
+}
+.sidebar {
+    position: fixed;
+    display: flex;
+    width: 250px;
+    height: 100%;
+    left: 0;
+    box-sizing: border-box;
+    background: skyblue;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.sidebar.hide {
+    width: 0;
+}
+
+.sidebar .text {
+    color: #fff;
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 1px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+
+div ul {
+    background-color: #1b1b1b;
+    height: 100%;
+    width: 100%;
+    list-style: none;
+}
+
+div ul li {
+    line-height: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+div ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding-left: 40px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    border-left: 3px solid transparent;
+}
+
+div ul li.active a {
+    color: aqua;
+    background-color: #1e1e1e;
+    border-left: aqua;
+}
+
+div ul ul {
+    position: static;
+    display: none;
+}
+
+div ul ul li {
+    line-height: 42px;
+    border-bottom: none;
+}
+
+div ul ul li a {
+    font-size: 17px;
+    color: #e6e6e6;
+    padding-left: 80px;
+
+}
+
+div ul li.active ul li a {
+    color: #e6e6e6;
+    background-color: #1b1b1b;
+    border-left: transparent;
+}
+
+div ul li a:hover {
+    color: aqua !important;
+    background-color: #1e1e1e !important;
+
+}
+
+div ul li a span {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 22px;
+    transition: transform 0.5s;
+}
+
+div ul li a span.rotate {
+    transform: translateY(-50%) rotate(-180deg);
+}
+
+div ul .feat-show.show {
+    display: block;
+}
+
+div ul .peng-show.show1 {
+    display: block;
+}
+
+/*menu Button*/
+#menu-button {
+    width: 32px;
+    position: absolute;
+    overflow: hidden;
+    left: 5px;
+    z-index: 102;
+}
+
+#menu-label {
+    position: relative;
+    display: block;
+    height: 20px;
+    cursor: pointer;
+    z-index: 102;
+}
+
+#menu-checkbox {
+    display: none;
+    z-index: 102;
+}
+
+#hamburger,
+#menu-label:after,
+#menu-label:before {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: black;
+}
+
+#menu-label:before,
+#menu-label:after {
+    content: "";
+    transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#menu-label:before {
+    top: 0px;
+}
+
+#menu-label:after {
+    top: 8px;
+}
+
+#hamburger {
+    top: 16px;
+}
+
+#hamburger:before {
+    content: "Menu";
+    position: absolute;
+    top: 5px;
+    right: 0;
+    left: 0;
+    color: black;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#menu-checkbox:checked+#menu-label::before {
+    left: -39px;
+}
+
+#menu-checkbox:checked+#menu-label::after {
+    left: 39px;
+}
+
+#menu-checkbox:checked+#menu-label #hamburger::before {
+    animation: MoveUpThenDown 0.8s ease 0.2s forwards, shakeUp 0.8s ease 0.2s forwards, shakeDown 0.2s ease 0.8s forwards;
+}
+
+@keyframes MoveUpThenDown {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: -27px;
+    }
+
+    100% {
+        top: -14px;
+    }
+}
+
+@keyframes shakeUp {
+    0% {
+        transform: rotateZ(0);
+    }
+
+    25% {
+        transform: rotateZ(-10deg);
+    }
+
+    50% {
+        transform: rotateZ(0)
+    }
+
+    75% {
+        transform: rotateZ(10deg);
+    }
+
+    100% {
+        transform: rotateZ(0);
+    }
+}
+
+@keyframes shakeDown {
+    0% {
+        transform: rotateZ(0);
+    }
+
+    80% {
+        transform: rotateZ(-3deg);
+    }
+
+    90% {
+        transform: rotateZ(3deg);
+    }
+
+    100% {
+        transform: rotateZ(0);
+    }
+}
+
+.content {
+    display: none;
+}
+
+.profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #666;
+}
+
+.gg-log-out {
+    z-index: 102;
+    box-sizing: border-box;
+    position: fixed;
+    display: block;
+    bottom: 10px;
+    left: 30px;
+    width: 25px;
+    height: 25px;
+    border: 2px solid;
+    background-color: rgba(0, 0, 0, 0);
+    transform: scale(var(--ggs, 1));
+    border-right: 0;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    margin-left: -10px
+}
+
+.gg-log-out::after,
+.gg-log-out::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute
+}
+
+.gg-log-out::after {
+    border-top: 2px solid;
+    border-left: 2px solid;
+    transform: rotate(-45deg);
+    width: 8px;
+    height: 8px;
+    left: 4px;
+    bottom: 2px
+}
+
+.gg-log-out::before {
+    border-radius: 3px;
+    width: 10px;
+    height: 2px;
+    background: currentColor;
+    left: 5px;
+    bottom: 5px
+}
+
+.gg-details-more {
+    box-sizing: border-box;
+    z-index: 103;
+    right: 200px;
+    top: 10px;
+    position: fixed;
+    display: block;
+    transform: scale(var(--ggs, 1));
+    width: 20px;
+    height: 14px;
+    border: 2px solid transparent
+}
+
+.gg-details-more::after,
+.gg-details-more::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    height: 2px;
+    border-radius: 3px;
+    background: currentColor
+}
+
+.gg-details-more::before {
+    box-shadow: 0 4px 0 0;
+    top: 0;
+    width: 16px
+}
+
+.gg-details-more::after {
+    width: 10px;
+    bottom: 0
+}
+
+.navbar {
+    width: 100px;
+}
