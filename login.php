@@ -17,7 +17,7 @@ session_start(); ?>
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: #000;
+            background:midnightblue;
 
             background-size: cover;
             background-size: 100% 100%;
@@ -37,20 +37,35 @@ session_start(); ?>
         <div class="form-input-material">
             <input type="password" name="password" id="password" placeholder=" " autocomplete="off" class="form-control-material" required />
             <label for="password">Password</label>
+            <input type="checkbox" id="show_password" onchange="togglePasswordVisibility()">
         </div>
         <button class="btn btn-primary btn-ghost">
             Login</button>
         <button class="btn btn-primary btn-ghost" onclick="window.location.href='index.php'">
             SignUp</button>
-        <?php if (isset($_SESSION["error"])) : ?>
-            <p style="color: red;"><?php echo $_SESSION["error"];
-                                    unset($_SESSION["error"]); ?></p>
-        <?php endif; ?>
-        <?php if (isset($_SESSION["error_1"])) : ?>
-            <p style="color: red;"><?php echo $_SESSION["error_1"];
-                                    unset($_SESSION["error_1"]); ?></p>
-        <?php endif; ?>
+            <?php
+    // Tampilkan pesan error jika ada
+    if (isset($_SESSION["error"])) {
+        echo '<div style="color:red;">' . $_SESSION["error"] . '</div>';
+        unset($_SESSION["error"]);
+    }
+
+    if (isset($_SESSION["error_1"])) {
+        echo '<div style="color:red;">' . $_SESSION["error_1"] . '</div>';
+        unset($_SESSION["error_1"]);
+    }
+    ?>
     </form>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -29,9 +29,9 @@ if (mysqli_num_rows($result) > 0) {
         header('Location: dashboard.php');
         exit;
     } else {
-        $_SESSION["error"] = "password salah. <br> Silahkan coba lagi";
+        $_SESSION["error"] = "Password salah. Silahkan coba lagi.";
         header('Location: login.php');
-    exit;
+        exit;
     }
 } else {
     $_SESSION["error_1"] = "Username tidak ditemukan.";
