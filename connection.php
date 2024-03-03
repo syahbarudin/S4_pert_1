@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validasi password (contoh menggunakan validasi dari contoh sebelumnya)
     function validatePassword($password) {
-        $pattern = '/^(?=.*[A-Z])(?=.*[!@#$%^&*_])(?=.*[0-9]).{8,}$/';
+        $pattern = '/^(?=.*[A-Z])(?=.*[!@#$%^&*_])(?=.*[0-9]).{6,}$/';
         return preg_match($pattern, $password);
     }
 
